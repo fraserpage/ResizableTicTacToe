@@ -48,8 +48,8 @@ function checkRowsForWinner(){
         piecesInARow = 0
         for (let col = 0; col < boardWidth; col++){
             countPiecesInARow(gameBoard[row][col])
+            isThereAWinner()
         }
-        isThereAWinner()
     }
 }
 
@@ -59,15 +59,15 @@ function checkColsForWinner(){
         piecesInARow = 0
         for (let row = 0; row < boardHeight; row++){
             countPiecesInARow(gameBoard[row][col])
+            isThereAWinner()
         }
     }
 }
 
 
 // Looking on south-east (\) diagonal
-function checkSEDiagonalForWinner(){
+function checkSouthEastDiagonalForWinner(){
     let diagonalsToCheck = ( boardHeight + boardWidth - 1 ) - (2*( inARowToWin - 1))
-    console.log("diagonals to check", diagonalsToCheck)
 
     let rowStart = boardHeight - inARowToWin
     let colStart = 0
@@ -77,53 +77,59 @@ function checkSEDiagonalForWinner(){
         console.log('outer loop ',i)
         let row = rowStart
         for(let col = colStart; col < colsToGet; col++){
-            
-            console.log('row',row,'col',col)
-            // if (row > 0){ row-- }
-            // else{
-            //     console.log("row is at 0")
-            //     colStart++
-            // }
+            // console.log('row',row,'col',col)
+            countPiecesInARow(gameBoard[row][col])
+            isThereAWinner()
             row++
         }
         if (rowStart > 0){ 
             rowStart-- 
         }
         else{
-            console.log('repeat 0')
+            // Moving along the top of the gird now 
+            // we stay at row 0 and start moving across the cols
             colStart++
         }
         if (colsToGet <= colsToGetMax) colsToGet++
     }
 }
 
-// this is a 5 tall 4 wide board
-// 2.0 3.1 4.2           row-col = 2
-// 1.0 2.1 3.2 4.3       row-col = 1
-// 0.0 1.1 2.2 3.3      row-col = 0
-// 0.1 1.2 2.3          row-col = -1
 
+// Looking on north-west (/) diagonal
+function checkNorthWestDiagonalForWinner(){
+    let diagonalsToCheck = ( boardHeight + boardWidth - 1 ) - (2*( inARowToWin - 1))
 
-    // // start value
-    // let row = boardHeight - inARowToWin
-    // console.log(boardHeight, inARowToWin)
-    // while (row >= 0){
-    //     let colsToGet = inARowToWin
-    //     while (colsToGet <= boardWidth){
-    //         console.log(colsToGet)
-    //         for (let col = 0; col < colsToGet; col++){
-    //             console.log('row',row,'col',col)
-    //         }
-    //         colsToGet ++
-    //     }
-    //     // first loop is lenght of inArowtowin - start at 0
-    //     // add 1 until length of board width - stay starting at 0
-    //     // then we're at row zero on repeat and counting down cols from boardWidth until we get to inARowToWin agian
-    //     // but at this point we start counting up our cols
-       
-    //     row--
-    // }
-// }
+    let rowStart = inARowToWin - 1
+    let colStart = 0
+    let colsToGet = inARowToWin
+    let colsToGetMax = boardWidth -1
+    for (let i = 0; i < diagonalsToCheck; i++){
+        console.log('outer loop ',i)
+        let row = rowStart
+        for(let col = colStart; col < colsToGet; col++){
+            console.log('row',row,'col',col)
+            // countPiecesInARow(gameBoard[row][col])
+            // isThereAWinner()
+            row--
+        }
+        if (rowStart < boardHeight - 1){ 
+            rowStart++
+        }
+        else{
+            // Moving along the bottom of the gird now 
+            // we stay at last row and start moving across the cols
+            colStart++
+        }
+        if (colsToGet <= colsToGetMax) colsToGet++
+    }
+}
+
+// 3 x 3
+// start at 2
+
+// 4x 4 (3)
+// start at 1
+
 
 function countPiecesInARow(square){
     if (typeof square === "undefined"){
