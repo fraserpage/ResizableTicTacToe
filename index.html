@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link href="styles/main.css" rel="stylesheet">
+    <script defer src="scripts/main.js"></script>
+</head>
+<body>
+    <h1>Let's play Tic Tac Toe</h1>
+    <div id="options">
+        <button disabled id="two-player-mode">Two player mode</button>
+        <button disabled id="three-player-mode">Three?! player mode</button>
+        <button id="vs-computer">Play agianst the computer</button>
+        <p>Board size: <label for="board-width">Width</label><input id="board-width" type="number" value="3"> x <label for="board-height">Height</label><input id="board-height" type="number" value="3"> </p>
+        <p>In a row to win: <input id="to-win" type="number" value="3"> </p>
+    </div>
+    <div id="gameboard"></div>
+    <div id="message-board"></div>
+</body>
+</html>
