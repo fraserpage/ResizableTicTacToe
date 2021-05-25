@@ -1,0 +1,90 @@
+:root {
+    --wght: 300;
+    --slnt: 0;
+    --mono: 0;
+    --casl: 0;
+}
+
+* {
+font-variation-settings:    "wght" var(--wght),
+                            "slnt" var(--slnt),
+                            "MONO" var(--mono),
+                            "CASL" var(--casl);
+}
+
+body{
+    font-family: 'Recursive', monospace;
+    padding: 3em 5%;
+}
+
+h1{
+    --wght: 800;
+}
+p {
+    line-height: 1.4;
+}
+
+input {
+    width: 2em;
+    text-align: right;
+    border: none;
+    border-bottom: 1px solid;
+    font-family: 'Recursive';
+    --wght: 600;
+    margin: 0 0.5em;
+    display: inline-block;
+}
+button {
+    background: black;
+    color: white;
+    font-family: 'Recursive';
+    font-size: 1rem;
+    border: none;
+    padding: 0.4em 0.8em;
+    margin-bottom: 2rem;
+    transition: all 0.2s;
+    --wght: 400;
+}
+
+button:hover {
+    --slnt: -13;
+}
+
+button:active {
+    background: yellow;
+    color: black;
+}
+
+div#gameboard {
+    max-width: 60vh;
+    border: 1px solid black
+}
+div#gameboard:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.square {
+    float: left;
+    box-shadow: inset 0px 0px 0 2px;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+}
+
+.square:not(.full):hover {
+    background: black;
+}
+.square:not(.full):active {
+    background: yellow;
+}
+.square span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.square.winner{
+    background: yellow;
+}

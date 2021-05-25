@@ -5,19 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&display=swap" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
     <script defer src="scripts/main.js"></script>
 </head>
 <body>
-    <h1>Let's play Tic Tac Toe</h1>
+    <h1>Let's play a really customizable version Tic Tac Toe</h1>
+    <p>Tic Tac Toe is boring. It's impossible to win unless you're playing agianst a not-very-bright child. So lets try to find a version that works. 3 players? Sure. 6 x 6 board? Go ahead! Probably it'll be more fun than the most boring game in the world.</p>
     <div id="options">
-        <button disabled id="two-player-mode">Two player mode</button>
-        <button disabled id="three-player-mode">Three?! player mode</button>
-        <button id="vs-computer">Play agianst the computer</button>
-        <p>Board size: <label for="board-width">Width</label><input id="board-width" type="number" value="3"> x <label for="board-height">Height</label><input id="board-height" type="number" value="3"> </p>
-        <p>In a row to win: <input id="to-win" type="number" value="3"> </p>
+
+        <p>Board size: <label for="board-width">Width</label><input id="board-width" type="number" value="3" min="2"> x <label for="board-height">Height</label><input id="board-height" type="number" value="3" min="2"> </p>
+        <p><label for="to-win">In a row to win: </label><input id="to-win" type="number" value="3" min="2">
+        <label for="players">Number of players: </label><input id="players" type="number" value="2" min="2" max="8"> </p>
+        <button id="new-game">New Game</button>
     </div>
-    <div id="gameboard"></div>
     <div id="message-board"></div>
+    <div id="gameboard"></div>
 </body>
 </html>
