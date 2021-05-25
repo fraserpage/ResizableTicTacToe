@@ -3,16 +3,19 @@
 const gameBoard = [] 
 
 /*----- app's state (variables) -----*/ 
+// if tyding this up, maybe make all these  properties of a 'game' object
 let boardHeight, 
     boardWidth, 
     inARowToWin, 
-    currentMove,
-    whoseTurn, 
-    players,
     numPlayers, 
-    checkingFor, 
     piecesInARow,
-    winningMoves
+    winningMoves,
+    currentMove,
+    winner,
+    players,
+    whoseTurn, 
+    checkingFor,
+    moveCount
 
 /*----- cached element references -----*/ 
 const gameboardEl = document.getElementById("gameboard")
@@ -46,6 +49,8 @@ function init(){
     winningMoves = []
     currentMove = false
     winner = false
+    checkingFor = ""
+    moveCount = 0
     
     setupPlayers()
     whoseTurn = 0
@@ -72,9 +77,13 @@ function render(){
         messageBoardEl.innerText = currentMove.player+" wins!"
         highlightWinner()
     }
+    else if(outOfMoves()){
+        messageBoardEl.innerText = "You're out of moves. No winner."
+    }
     else{
         messageBoardEl.innerText = players[whoseTurn]+"'s turn."
     }
+
 }
 
 function highlightWinner(){
@@ -121,6 +130,13 @@ function setupPlayers(){
 
 
 /*----- functions - Game play -----*/
+
+function outOfMoves(){
+    if (moveCount === boardHeight * boardWidth){
+        return true
+    }
+    else{ moveCount++ }
+}
 
 function clickOnBoard(square){
     let row = square.dataset.row
