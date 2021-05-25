@@ -119,6 +119,8 @@ function buildGameBoardElem(){
             gameboardEl.appendChild(square)
         }
     }
+    boardWidth > 10 ? gameboardEl.style.maxWidth = "100%" : gameboardEl.style.maxWidth = ""
+    
 }
 
 function setupPlayers(){
@@ -165,9 +167,9 @@ function nextPlayer(){
 
 function checkForWinner(){
     checkRowsForWinner()
-    checkColsForWinner()
-    checkSouthEastDiagonalForWinner()
-    checkNorthWestDiagonalForWinner()
+    if (!winner){checkColsForWinner()}
+    if (!winner){checkSouthEastDiagonalForWinner()}
+    if (!winner){checkNorthWestDiagonalForWinner()}
 }
 
 // Looking in rows
