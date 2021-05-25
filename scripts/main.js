@@ -121,8 +121,8 @@ function buildGameBoardElem(){
             square.dataset.row = row
             square.dataset.col = col            
             square.className = 'square'
-            square.style.width = (90/boardWidth) + "vw"
-            square.style.paddingBottom = (90/boardWidth) + "vw"
+            square.style.width = "min("+(90/boardWidth) + "vw, 7rem)"
+            square.style.paddingBottom = "min("+(90/boardWidth) + "vw, 7rem)"
             gameboardEl.appendChild(square)
         }
     }
