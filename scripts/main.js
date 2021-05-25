@@ -21,6 +21,7 @@ let boardHeight,
 const gameboardEl = document.getElementById("gameboard")
 const messageBoardEl = document.getElementById("message-board")
 /*----- game options -----*/ 
+const optionsElem = document.getElementById('options')
 const boardWidthInput = document.getElementById('board-width')
 const boardHeightInput = document.getElementById('board-height')
 const inARowToWinInput = document.getElementById('to-win')
@@ -36,6 +37,12 @@ gameboardEl.addEventListener('click',function(e){
         clickOnBoard(e.target)
     }
 });
+
+optionsElem.addEventListener('change',function(e){
+    if (e.target.nodeName === "INPUT"){
+        enforceMinMaxInput(e.target)
+    }
+})
 
 /*----- functions -----*/
 
@@ -131,6 +138,14 @@ function setupPlayers(){
     }
 }
 
+function enforceMinMaxInput(input){
+    if (parseInt(input.value) > input.max){
+        input.value = input.max
+    }
+    else if (parseInt(input.value) < input.min){
+        input.value = input.min
+    }
+}
 
 /*----- functions - Game play -----*/
 
