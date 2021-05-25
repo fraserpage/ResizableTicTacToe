@@ -96,8 +96,10 @@ div#gameboard:after {
     font-size: 3em;
     --wght: 1000;
     --mono: 1;
+    user-select: none;
 }
 .square.winner{
     background: yellow;
     --casl: 1;
+    --slnt: -15;
 }
