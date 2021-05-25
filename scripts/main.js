@@ -121,12 +121,12 @@ function buildGameBoardElem(){
             square.dataset.row = row
             square.dataset.col = col            
             square.className = 'square'
-            square.style.width = 100/boardWidth + "%"
-            square.style.paddingBottom = 100/boardWidth + "%"
+            square.style.width = (90/boardWidth) + "vw"
+            square.style.paddingBottom = (90/boardWidth) + "vw"
             gameboardEl.appendChild(square)
         }
     }
-    boardWidth > 10 ? gameboardEl.style.maxWidth = "100%" : gameboardEl.style.maxWidth = ""
+    gameboardEl.style.gridTemplateColumns = "repeat("+boardWidth+", 1fr)"
     
 }
 

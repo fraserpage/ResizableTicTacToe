@@ -16,6 +16,7 @@ font-variation-settings:    "wght" var(--wght),
 body{
     font-family: 'Recursive', monospace;
     padding: 3em 5%;
+    margin: 0;
 }
 
 h1{
@@ -65,18 +66,14 @@ div#message-board {
 }
 
 div#gameboard {
-    max-width: 60vh;
-    border: 1px solid black
-}
-div#gameboard:before, 
-div#gameboard:after {
-    content: "";
-    display: table;
-    clear: both;
+    border: 1px solid black;
+    display: grid;
+    width: fit-content;
 }
 
 .square {
-    float: left;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
     box-shadow: inset 0px 0px 0 2px;
     box-sizing: border-box;
     cursor: pointer;
