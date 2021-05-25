@@ -54,11 +54,19 @@ button:active {
     background: yellow;
     color: black;
 }
+div#message-board {
+    margin-bottom: 1rem;
+    --casl: 1;
+    --wght: 800;
+    --slnt: -15;
+    font-size: 1.5em;
+}
 
 div#gameboard {
     max-width: 60vh;
     border: 1px solid black
 }
+div#gameboard:before, 
 div#gameboard:after {
     content: "";
     display: table;
@@ -72,10 +80,11 @@ div#gameboard:after {
     cursor: pointer;
     position: relative;
 }
-
+#gameboard:not(.winner)
 .square:not(.full):hover {
     background: black;
 }
+#gameboard:not(.winner)
 .square:not(.full):active {
     background: yellow;
 }
@@ -84,7 +93,11 @@ div#gameboard:after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 3em;
+    --wght: 1000;
+    --mono: 1;
 }
 .square.winner{
     background: yellow;
+    --casl: 1;
 }
