@@ -12,7 +12,7 @@ let boardHeight,
     numPlayers, 
     checkingFor, 
     piecesInARow,
-    winningMoves = null;
+    winningMoves
 
 /*----- cached element references -----*/ 
 const gameboardEl = document.getElementById("gameboard")
@@ -44,6 +44,7 @@ function init(){
     numPlayers =  parseInt(numPlayersInput.value)
     piecesInARow = []
     winningMoves = []
+    currentMove = false
     winner = false
     
     setupPlayers()
@@ -51,7 +52,37 @@ function init(){
     
     setUpBoardObject()
     buildGameBoardElem()
-    messageBoardEl.innerText =""
+    render()
+
+}
+
+/*----- functions - Render -----*/
+
+function render(){
+    if (currentMove){
+        let square = document.getElementById("s-"+currentMove.row+"-"+currentMove.col)
+        square.innerHTML = "<span>"+currentMove.player+"</span>"
+        square.classList.add("full")
+    }
+    else{
+        gameboardEl.classList.remove("winner")
+    }
+    
+    if (winner){
+        messageBoardEl.innerText = currentMove.player+" wins!"
+        highlightWinner()
+    }
+    else{
+        messageBoardEl.innerText = players[whoseTurn]+"'s turn."
+    }
+}
+
+function highlightWinner(){
+    for (let square of winningMoves){
+        squareEl = document.getElementById("s-"+square.row+"-"+square.col)
+        squareEl.classList.add("winner")
+        gameboardEl.classList.add("winner")
+    }
 }
 /*----- functions - setup stuff -----*/
 //don't let height or width be smaller than inARowToWin - nice to have I guess... 
@@ -88,35 +119,13 @@ function setupPlayers(){
     }
 }
 
-/*----- functions - Render -----*/
-
-function render(){
-    let square = document.getElementById("s-"+currentMove.row+"-"+currentMove.col)
-    square.innerHTML = "<span>"+currentMove.player+"</span>"
-    square.classList.add("full")
-
-    if (winner){
-        messageBoardEl.innerText = currentMove.player+" wins!"
-        highlightWinner()
-    }
-    else{
-        messageBoardEl.innerText = players[whoseTurn]+"'s turn."
-    }
-}
-
-function highlightWinner(){
-    for (let square of winningMoves){
-        squareEl = document.getElementById("s-"+square.row+"-"+square.col)
-        squareEl.classList.add("winner")
-    }
-}
 
 /*----- functions - Game play -----*/
 
 function clickOnBoard(square){
     let row = square.dataset.row
     let col = square.dataset.col
-    if (typeof gameBoard[row][col] === "undefined"){
+    if (typeof gameBoard[row][col] === "undefined" && !winner){
         currentMove = {row: row, col: col, player:players[whoseTurn]}
         gameBoard[row][col] = players[whoseTurn]
         checkForWinner()
@@ -245,7 +254,6 @@ function isThereAWinner(){
     if (piecesInARow.length === inARowToWin) {
         winner = true 
         winningMoves = piecesInARow
-        console.log('winner. piecees in a row',piecesInARow)
         return true
     }
 }
