@@ -5,7 +5,8 @@
     --casl: 0;
 }
 
-* {
+*,
+*:before {
 font-variation-settings:    "wght" var(--wght),
                             "slnt" var(--slnt),
                             "MONO" var(--mono),
@@ -88,6 +89,7 @@ div#gameboard:after {
 .square:not(.full):active {
     background: yellow;
 }
+.square:hover::before,
 .square span{
     position: absolute;
     top: 50%;
@@ -97,6 +99,16 @@ div#gameboard:after {
     --wght: 1000;
     --mono: 1;
     user-select: none;
+}
+.square:hover:before{
+    --slnt: -15;
+    --mono: 1;
+    --wght: 350;
+    color: white;
+    content: var(--player);
+}
+.square:hover:active:before{
+    color: black;
 }
 .square.winner{
     background: yellow;

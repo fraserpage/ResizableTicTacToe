@@ -82,6 +82,7 @@ function render(){
     }
     else{
         messageBoardEl.innerText = players[whoseTurn]+"'s turn."
+        gameboardEl.style.setProperty('--player', "'"+players[whoseTurn]+"'")
     }
 
 }
@@ -111,7 +112,7 @@ function buildGameBoardElem(){
             let square = document.createElement("div")
             square.id = 's-'+row+"-"+col
             square.dataset.row = row
-            square.dataset.col = col
+            square.dataset.col = col            
             square.className = 'square'
             square.style.width = 100/boardWidth + "%"
             square.style.paddingBottom = 100/boardWidth + "%"
