@@ -132,7 +132,7 @@ function buildGameBoardElem(){
 
 function setupPlayers(){
     players = []
-    let possiblePlayers = ["x","o","z","y","w","q","r","k"]
+    let possiblePlayers = ["x","o","z","v","w","s","r","n"]
     for (let i = 0; i < numPlayers; i++ ){
         players.push(possiblePlayers[i])
     }
