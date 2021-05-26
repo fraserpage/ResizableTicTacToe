@@ -7,24 +7,27 @@
 
 *,
 *:before {
-font-variation-settings:    "wght" var(--wght),
-                            "slnt" var(--slnt),
-                            "MONO" var(--mono),
-                            "CASL" var(--casl);
+    font-variation-settings:    "wght" var(--wght),
+                                "slnt" var(--slnt),
+                                "MONO" var(--mono),
+                                "CASL" var(--casl);
+    box-sizing: border-box;
 }
 
 body{
     font-family: 'Recursive', monospace;
     padding: 3em 5%;
     margin: 0;
+    width: fit-content;
 }
 
 h1{
     --wght: 800;
 }
-p {
+header {
     line-height: 1.4;
     max-width: 50rem;
+    width: 90vw;
 }
 
 input {
@@ -75,7 +78,6 @@ div#gameboard {
     min-width: 2.5rem;
     min-height: 2.5rem;
     box-shadow: inset 0px 0px 0 2px;
-    box-sizing: border-box;
     cursor: pointer;
     position: relative;
 }
